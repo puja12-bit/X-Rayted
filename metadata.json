@@ -1,0 +1,7 @@
+{
+  "name": "X-Rayted",
+  "description": "A production-ready PWA for analyzing product labels using Gemini multimodal AI.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

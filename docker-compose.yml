@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  label-scan:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Pass the API key during build time for Vite replacement
+        - API_KEY=${API_KEY}
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    # Optional: If you want to use the API key at runtime (less secure for client-side apps, but fine here since Vite bakes it in)
+    # env_file: .env
