@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { Zap, Image as ImageIcon, X, Plus, Play, Trash2 } from 'lucide-react';
 
