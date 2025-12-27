@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
-    "./**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
   theme: {
@@ -15,7 +15,7 @@ export default {
         'surface-light': '#27272a',
       },
       padding: {
-        'safe': 'env(safe-area-inset-bottom)',
+        safe: 'env(safe-area-inset-bottom)',
       },
       animation: {
         'scan-line': 'scan 2s linear infinite',
@@ -30,4 +30,4 @@ export default {
     },
   },
   plugins: [],
-}
+};
