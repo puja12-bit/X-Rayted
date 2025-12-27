@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://xrayted-467467814488.europe-west1.run.app";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function scanImages(images: Blob[]) {
   const formData = new FormData();
