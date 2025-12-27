@@ -11,7 +11,7 @@ router.post("/scan", upload.single("image"), async (req, res) => {
   }
 
   try {
-    const result = await analyzeImage(req.file.buffer);
+    const results = await analyzeImages(images);
     res.json(result);
   } catch (err) {
     console.error(err);
