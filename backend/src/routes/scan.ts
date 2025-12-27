@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from "multer";
-import { analyzeImage } from "../services/geminiService";
+import { analyzeImages } from "../services/geminiService";
 
 const router = Router();
 const upload = multer({ limits: { fileSize: 5 * 1024 * 1024 } }); // 5MB cap
