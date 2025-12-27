@@ -3,21 +3,33 @@ import multer from "multer";
 import { analyzeImages } from "../services/geminiService";
 
 const router = Router();
-const upload = multer({ limits: { fileSize: 5 * 1024 * 1024 } }); // 5MB cap
+const upload = multer();
 
-router.post("/scan", upload.single("image"), async (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "Image is required" });
-  }
+router.post(
+  "/scan",
+  upload.array("images"),
+  async (req, res) => {
+    try {
+      if (!req.files || req.files.length === 0) {
+        return res.status(400).json({ error: "No images uploaded" });
+      }
 
-  try {
-    const results = await analyzeImages(images);
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Scan failed" });
+      // Multer gives files as Express.Multer.File[]
+      const files = req.files as Express.Multer.File[];
+
+      // Convert buffers → base64 strings
+      const images = files.map((file) =>
+        file.buffer.toString("base64")
+      );
+
+      const results = await analyzeImages(images);
+
+      return res.json({ results });
+    } catch (err) {
+      console.error("Scan failed:", err);
+      return res.status(500).json({ error: "Scan failed" });
+    }
   }
-});
+);
 
 export default router;
-
