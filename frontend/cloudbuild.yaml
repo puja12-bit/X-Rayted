@@ -1,0 +1,15 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '--no-cache',
+        '--build-arg',
+        'VITE_BACKEND_URL=https://xrayted-backend-467467814488.europe-west1.run.app',
+        '-t',
+        'europe-west1-docker.pkg.dev/x-rayted/cloud-run-source-deploy/xrayted-frontend:latest',
+        '.'
+      ]
+
+images:
+  - 'europe-west1-docker.pkg.dev/x-rayted/cloud-run-source-deploy/xrayted-frontend:latest'
