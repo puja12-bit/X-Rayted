@@ -17,5 +17,6 @@ export async function scanImages(images: Blob[]) {
     throw new Error(`Scan failed: ${text}`);
   }
 
-  return response.json();
+  const data = await response.json();
+  return data.results;
 }
